@@ -43,7 +43,7 @@ Route::post('productdelete', [ProductController::class, 'productdelete']);
 Route::post('deleteuser', [ProductController::class, 'deleteuser']);
 Route::get('/editProduct/{id}', [ProductController::class, 'update']);
 Route::get('{any}/getData/{id}', [ProductController::class, 'getData']);
-Route::post('productupdate', [ProductController::class, 'updateData']);
+Route::post('{any}/productupdate', [ProductController::class, 'updateData']);
 
 
 

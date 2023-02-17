@@ -20,6 +20,7 @@
 </x-app-layout>
 @else
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Seller Dashboard') }}
@@ -30,6 +31,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" >
                 <div class="p-6 text-gray-900 dark:text-gray-100 text-center">
+                    <a href="{{route('sellerhome')}}">Back To Home</a>
                     <div id="add" class="tabcontent m-2">
                         <x-guest-layout>
                             <form id="ProducteditForm" class="col-12" method="POST" enctype="multipart/form-data">
@@ -132,7 +134,7 @@
 	});
     function submitForm(){
         //console.log(document.lookup.name.value)
-        var formEl = document.forms.ProductForm;
+        var formEl = document.forms.ProducteditForm;
         var formData = new FormData(formEl);
         formData.append('user_id', {{Auth::user()->id}})
         //console.log(name)

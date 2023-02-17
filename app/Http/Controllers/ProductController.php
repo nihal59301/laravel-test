@@ -103,6 +103,25 @@ class ProductController extends Controller
 
 
     public function updateData(Request $request){
-        
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'model' => ['required', 'string'],
+            'price'=>['required', 'numeric'],
+            'ProductDescription'=> ['required', 'string'],
+            'user_id'=> ['required'],
+            'ProductImg'=>['required','mimes:jpg,jpeg,png']
+        ]);
+        $image=time().'.'.$request->ProductImg->extension();
+        $request->ProductImg->move(public_path('productImage'),$image); 
+        return ProductModel::where('id', $request->editId)->update([
+            'name'=> $request->name,
+            'model'=> $request->model,
+            'price'=> $request->price,
+            'ProductDescription'=> $request->ProductDescription,
+            'user_id'=> $request->user_id,
+            'ProductImg'=>$image,
+            'is_active'=>1
+        ]);
+
     }
 }
